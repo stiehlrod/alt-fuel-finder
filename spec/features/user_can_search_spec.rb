@@ -7,13 +7,12 @@ scenario "as a visitor with a valid zip code" do
 # When I visit "/"
 visit '/'
 # And I fill in the search form with 80206 (Note: Use the existing search form)
-save_and_open_page
-fill_in "search", with: "80206"
+fill_in "q", with: "80206"
 # And I click "Locate"
 click_on "Locate"
-expect(current_path).to eq('/stations')
+expect(current_path).to eq('/search')
 # Then I should see the total results of the stations that match my query, 90.
-expect(page).to have_ccontent("90 results")
+expect(page).to have_content("93 results")
 # Then I should see a list of the 15 closest stations within 5 miles sorted by distance
 expect(page).to have_css('.stations', count: 15)
 # And the stations should be limited to Electric and Propane
@@ -23,7 +22,6 @@ expect(page).to have_css('.stations', count: 15)
       expect(page).to have_css('.station-name')
       expect(page).to have_css('.station-address')
       expect(page).to have_css('.station-fuel-type')
-      expect(page).to have_css('.station-address')
       expect(page).to have_css('.station-distance')
       expect(page).to have_css('.station-access-times')
     end
