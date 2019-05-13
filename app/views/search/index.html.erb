@@ -1,0 +1,10 @@
+<h1>Find alternative fuels</h1>
+<% facade.stations.each do |s| %>
+  <ul class="stations">
+    <li class="station-name"><% s.name %></li>
+    <li class="station-address"><% s.address %></li>
+    <li class="station-fuel-type"><% s.fuel_type %></li>
+    <li class="station-distance"><% s.address %></li>
+    <li class="station-access-times"><% s.distance %></li>
+  </ul>
+<% end %>
